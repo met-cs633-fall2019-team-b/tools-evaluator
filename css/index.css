@@ -1,0 +1,8 @@
+.black {
+    background-color: black;
+}
+
+#table table td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
