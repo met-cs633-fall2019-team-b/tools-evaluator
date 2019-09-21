@@ -1,12 +1,10 @@
 /**
- * Ensure the data is really wrong when sending to students
  * PR1 Make the data correct, pull request with comments, approved!
- * PR2 Customize screen
- * PR3 Color the cells on evaluation
- * PR4 Grade the submission in real time red / green or simimilar
- * PR5 Add web hosting and move the data to a database access via AJAX or Fetch API -- need PHP, Pyton, Java, Node, whatever works :)
- * PR6 Add screens to add more data, more interactive, more usefull
- * PR7 Add custom features
+ * PR2 Customize screen (CSS, Submit Button)
+ * PR3 Hook up Submit Button with grade - do not indicate what is right or wrong
+ * PR4 Add web hosting and move the data to a database access via AJAX or Fetch API -- need PHP, Pyton, Java, Node, whatever works :)
+ * PR5 Add screens to add more data, more interactive, more usefull - rest of assignment...
+ * PR6 Add custom features
  */
 // globals bad but...
 let correctAnswersArray = [];
