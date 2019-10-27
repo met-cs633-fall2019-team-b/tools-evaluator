@@ -21,10 +21,10 @@ function buildTable(params) {
         console.log('Arrays?');
         // order categories
         orderedCategoriesArray = [...Array(categories.length)];
-        categories.forEach(cat => {
-            orderedCategoriesArray[cat.position - 1] = cat;
+        categories.forEach(category => {
+            orderedCategoriesArray[category.position - 1] = category;
         });
-        console.log('Ordered Cats ', orderedCategoriesArray);
+        console.log('Ordered Categories ', orderedCategoriesArray);
         orderedToolsArray = [...Array(tools.length)];
         tools.forEach(tool => {
             orderedToolsArray[tool.position - 1] = tool;
@@ -36,10 +36,10 @@ function buildTable(params) {
 
         $table.append('<tr>');
         $table.append('<th></th>');
-        orderedCategoriesArray.forEach(cat => {
-            // headers accross
+        orderedCategoriesArray.forEach(category => {
+            // headers across
             // TODO: pre build map of names, use index to get mapped value name
-            let header = '<th>' + cat.name + '</th>';
+            let header = '<th>' + category.name + '</th>';
             $table.append(header);
         });
         $table.append('</tr>');
@@ -67,18 +67,18 @@ $(function() {
 });
 
 function evaluateCell(width, height, name) {
-    console.log('Evalueateing', studentAnswersArray);
+    console.log('Evaluating', studentAnswersArray);
     console.log('Evaluate width ', width, ' height ', height, name);
-    const indexToRemove = studentAnswersArray.indexOf(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].name)
+    const indexToRemove = studentAnswersArray.indexOf(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].id);
     $('#cell' + width + height).toggleClass('black');
     if (indexToRemove !== -1) {
         // remove it
-        console.log('Removing ', indexToRemove)
+        console.log('Removing ', indexToRemove);
         studentAnswersArray.splice(indexToRemove, 1);
     } else {
         // add it
         console.log('Pushing ', height, ' ', width);
-        studentAnswersArray.push(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].name);
+        studentAnswersArray.push(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].id);
     }
     console.log('Answers ', studentAnswersArray);
     calculateScore();
@@ -101,7 +101,7 @@ function calculateScore() {
     } else if(studentAnswersArray.length < correctAnswersArray.length) {
         msg = 'Please Select more cells.';
     } else {
-        msg = 'Unkown error';
+        msg = 'Unknown error';
     }
     $('#score').text('Score ' + score);
 }
