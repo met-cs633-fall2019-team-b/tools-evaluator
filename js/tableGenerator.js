@@ -84,7 +84,7 @@ function evaluateCell(width, height, name) {
     console.log('Evaluating', studentAnswersArray);
     console.log('Evaluate width ', width, ' height ', height, name);
     const indexToRemove = studentAnswersArray.indexOf(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].id);
-    $('#cell' + width + height).toggleClass('black');
+    $('#cell' + width + height).text('\u2713');
     if (indexToRemove !== -1) {
         // remove it
         console.log('Removing ', indexToRemove);
