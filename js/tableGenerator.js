@@ -6,6 +6,16 @@
  * PR5 Add screens to add more data, more interactive, more usefull - rest of assignment...
  * PR6 Add custom features
  */
+
+const theadOpen = '<thead>';
+const theadClose = '</thead>';
+const thOpen = '<th>';
+const thClose = '</th>';
+const trOpen = '<tr>';
+const trClose = '</tr>';
+const tdOpen = '<td>';
+const tdClose = '</td>';
+
 // globals bad but...
 let correctAnswersArray = [];
 let studentAnswersArray = [];
@@ -14,7 +24,7 @@ let orderedToolsArray;
 
 function buildTable(params) {
     // TODO: Get data via AJAX or fetch API
-    let $table = $('<table/>');
+    let $table = $('<table />');
     let categories = params.categories; // width
     let tools = params.tools;           // height
     if(Array.isArray(categories) && Array.isArray(tools)) {
@@ -34,27 +44,31 @@ function buildTable(params) {
         console.log('Ordered Tools ', orderedToolsArray);
         console.log('Correct Answers ', correctAnswersArray);
 
-        $table.append('<tr>');
-        $table.append('<th></th>');
+        // build the header row and append it to the table
+        let headerRow = '';
+        let headerCells = headerRow.concat(thOpen, thClose);
         orderedCategoriesArray.forEach(category => {
-            // headers across
+            // header row
             // TODO: pre build map of names, use index to get mapped value name
-            let header = '<th>' + category.name + '</th>';
-            $table.append(header);
+            headerCells = headerCells.concat(thOpen, category.name, thClose);
         });
-        $table.append('</tr>');
-        // now need to do each row
+        headerRow = headerRow.concat(theadOpen, trOpen, headerCells, trClose, theadClose);
+        $table.append(headerRow);
+
+        // build each row then add them to the table as one long string
+        let thisRow = '';
         orderedToolsArray.forEach((tool, index) => {
-            $table.append('<tr>');
-            // need side header
-            // TODO: pre build map of names, use index to get mapped value name
-            $table.append('<th>' + tool.name + '</th>');
-            // add cells that can be clicked on
-            for(let i = 0; i < categories.length; i++) {
-                $table.append('<td id="cell' + i + '' + index + '" onclick="evaluateCell(\'' + i + '\',\'' + index + '\',\'' + tool.name + '\');"></td>');
-            }
-            $table.append('</tr>');
+          thisRow = thisRow.concat(trOpen, tdOpen, tool.name, tdClose);
+
+          for(let i = 0; i < categories.length; i++) {
+            thisRow = thisRow.concat('<td id="cell' + i + '' + index + '" onclick="evaluateCell(\'' + i + '\',\'' + index + '\',\'' + tool.name + '\');">', tdClose);
+            console.log(thisRow);
+          }
+          thisRow = thisRow.concat(trClose);
         });
+        $table.append(thisRow);
+
+        // add the table to the DOM
         $('#table').append($table);
     }
     console.log('info ', categories, tools);
