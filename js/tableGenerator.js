@@ -46,11 +46,11 @@ function buildTable(params) {
 
         // build the header row and append it to the table
         let headerRow = '';
-        let headerCells = headerRow.concat(thOpen, thClose);
+        let headerCells = headerRow.concat('<th class="tools-cell">', 'Tools', thClose);
         orderedCategoriesArray.forEach(category => {
             // header row
             // TODO: pre build map of names, use index to get mapped value name
-            headerCells = headerCells.concat(thOpen, category.name, thClose);
+            headerCells = headerCells.concat('<th class="rotate">', category.name, thClose);
         });
         headerRow = headerRow.concat(theadOpen, trOpen, headerCells, trClose, theadClose);
         $table.append(headerRow);

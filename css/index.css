@@ -1,8 +1,81 @@
+/** HTML element styles **/
+table {
+    table-layout: auto;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+th {
+    border: 1px solid black;
+    background-color: white;
+    width: 9%
+}
+
+td {
+    border: 1px solid black;
+}
+
+tr:nth-child(even) {
+    background-color: whitesmoke;
+}
+
+/** column styles **/
+td:nth-child(1) {
+    background-color: white;
+    padding: 5px 5px 5px 5px;
+    width: 19%;
+}
+
+td:nth-child(2):hover { border: 2px solid #cc0000; }
+td:nth-child(3):hover { border: 2px solid #cc0000; }
+td:nth-child(4):hover { border: 2px solid #cc0000; }
+td:nth-child(5):hover { border: 2px solid #cc0000; }
+td:nth-child(6):hover { border: 2px solid #cc0000; }
+td:nth-child(7):hover { border: 2px solid #cc0000; }
+td:nth-child(8):hover { border: 2px solid #cc0000; }
+td:nth-child(9):hover { border: 2px solid #cc0000; }
+td:nth-child(10):hover { border: 2px solid #cc0000; }
+
+/** custom styles **/
 .black {
     background-color: black;
 }
 
-#table table td {
-    border: 1px solid black;
-    border-collapse: collapse;
+.bu-box-div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: serif;
+    font-size: 38px;
+    text-align: center;
+    width: 200px;
+    height: 75px;
+    background-color: #cc0000;
+    outline: #cc0000 solid medium;
+    border: 2px solid white;
+    padding: 5px;
+}
+
+.categories-div {
+    font-size: 20px;
+    font-weight: bold;
+    color: #cc0000;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.rotate {
+    background: none;
+    transform: rotate(-45deg);
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+}
+
+.tools-cell {
+    font-size: 20px;
+    color: #cc0000;
+    padding: 40px;
 }
