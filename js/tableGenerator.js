@@ -9,6 +9,8 @@
 
 const theadOpen = '<thead>';
 const theadClose = '</thead>';
+const tbodyOpen = '<tbody>';
+const tbodyClose = '</tbody>';
 const thOpen = '<th>';
 const thClose = '</th>';
 const trOpen = '<tr>';
@@ -46,7 +48,7 @@ function buildTable(params) {
 
         // build the header row and append it to the table
         let headerRow = '';
-        let headerCells = headerRow.concat('<th class="tools-cell">', 'Tools', thClose);
+        let headerCells = headerRow.concat(thOpen, 'Tools', thClose);
         orderedCategoriesArray.forEach(category => {
             // header row
             // TODO: pre build map of names, use index to get mapped value name
@@ -56,17 +58,16 @@ function buildTable(params) {
         $table.append(headerRow);
 
         // build each row then add them to the table as one long string
-        let thisRow = '';
+        let thisRow = tbodyOpen;
         orderedToolsArray.forEach((tool, index) => {
           thisRow = thisRow.concat(trOpen, tdOpen, tool.name, tdClose);
 
           for(let i = 0; i < categories.length; i++) {
             thisRow = thisRow.concat('<td id="cell' + i + '' + index + '" onclick="evaluateCell(\'' + i + '\',\'' + index + '\',\'' + tool.name + '\');">', tdClose);
-            console.log(thisRow);
           }
           thisRow = thisRow.concat(trClose);
         });
-        $table.append(thisRow);
+        $table.append(thisRow, tbodyClose);
 
         // add the table to the DOM
         $('#table').append($table);
@@ -87,7 +88,7 @@ function evaluateCell(width, height, name) {
 
     // toggle the check mark
     ($('#cell' + width + height).text() === '')
-      ? $('#cell' + width + height).text('\u2713')
+      ? $('#cell' + width + height).text('\u2713') // <-- unicode check mark
       : $('#cell' + width + height).text('');
 
     if (indexToRemove !== -1) {

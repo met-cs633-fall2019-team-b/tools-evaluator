@@ -25,14 +25,14 @@ var data = {
         {id: "t23", name: "Zephyr", category: "c05", position: "23"},
     ],
     categories: [
-        {id: "c01", name: "Code&nbsp;Control", position: "1"},
+        {id: "c01", name: "Code Control", position: "1"},
         {id: "c02", name: "Collaboration", position: "2"},
-        {id: "c03", name: "Defect&nbsp;Tracking", position: "3"},
-        {id: "c04", name: "Doc&nbsp;Control", position: "4"},
-        {id: "c05", name: "Peer&nbsp;Reviews", position: "5"},
+        {id: "c03", name: "Defect Tracking", position: "3"},
+        {id: "c04", name: "Doc Control", position: "4"},
+        {id: "c05", name: "Peer Reviews", position: "5"},
         {id: "c06", name: "Requirements", position: "6"},
-        {id: "c07", name: "System&nbspTest Management", position: "7"},
-        {id: "c08", name: "Unit&nbsp;Test", position: "8"},
-        {id: "c09", name: "Static&nbsp;Analysis", position: "9"},
+        {id: "c07", name: "System Test Management", position: "7"},
+        {id: "c08", name: "Unit Test", position: "8"},
+        {id: "c09", name: "Static Analysis", position: "9"},
     ]
 };
