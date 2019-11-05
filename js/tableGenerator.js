@@ -87,9 +87,11 @@ function evaluateCell(width, height, name) {
     const indexToRemove = studentAnswersArray.indexOf(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].id);
 
     // toggle the check mark
-    ($('#cell' + width + height).text() === '')
-      ? $('#cell' + width + height).text('\u2713') // <-- unicode check mark
-      : $('#cell' + width + height).text('');
+    if ($('#cell' + width + height).text() === '') {
+        $('#cell' + width + height).text('\u2713') // <-- unicode check mark
+    } else {
+        $('#cell' + width + height).text('');
+    }
 
     if (indexToRemove !== -1) {
         // remove it
@@ -101,7 +103,6 @@ function evaluateCell(width, height, name) {
         studentAnswersArray.push(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].id);
     }
     console.log('Answers ', studentAnswersArray);
-    calculateScore();
 }
 
 function calculateScore() {

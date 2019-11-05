@@ -115,6 +115,11 @@ td:nth-child(10):hover { border-top: 1px solid #cc0000; border-right: 2px solid 
     padding: 25px 0;
 }
 
+#score {
+    font-size: 22px;
+    padding: 0 20px;
+}
+
 .submit-button {
     height: 50px;
     width: 100px;
