@@ -105,3 +105,28 @@ td:nth-child(10):hover { border-top: 1px solid #cc0000; border-right: 2px solid 
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
 }
+
+.button-row-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 80%;
+    padding: 25px 0;
+}
+
+#score {
+    font-size: 22px;
+    padding: 0 20px;
+}
+
+.submit-button {
+    height: 50px;
+    width: 100px;
+    border-radius: 12%;
+    color: white;
+    font-size: 24px;
+    font-family: serif;
+    background-color: #cc0000;
+    cursor: pointer;
+}

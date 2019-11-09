@@ -7,17 +7,6 @@
  * PR6 Add custom features
  */
 
-const theadOpen = '<thead>';
-const theadClose = '</thead>';
-const tbodyOpen = '<tbody>';
-const tbodyClose = '</tbody>';
-const thOpen = '<th>';
-const thClose = '</th>';
-const trOpen = '<tr>';
-const trClose = '</tr>';
-const tdOpen = '<td>';
-const tdClose = '</td>';
-
 // globals bad but...
 let correctAnswersArray = [];
 let studentAnswersArray = [];
@@ -25,6 +14,17 @@ let orderedCategoriesArray;
 let orderedToolsArray;
 
 function buildTable(params) {
+    const theadOpen = '<thead>';
+    const theadClose = '</thead>';
+    const tbodyOpen = '<tbody>';
+    const tbodyClose = '</tbody>';
+    const thOpen = '<th>';
+    const thClose = '</th>';
+    const trOpen = '<tr>';
+    const trClose = '</tr>';
+    const tdOpen = '<td>';
+    const tdClose = '</td>';
+
     // TODO: Get data via AJAX or fetch API
     let $table = $('<table />');
     let categories = params.categories; // width
@@ -87,9 +87,11 @@ function evaluateCell(width, height, name) {
     const indexToRemove = studentAnswersArray.indexOf(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].id);
 
     // toggle the check mark
-    ($('#cell' + width + height).text() === '')
-      ? $('#cell' + width + height).text('\u2713') // <-- unicode check mark
-      : $('#cell' + width + height).text('');
+    if ($('#cell' + width + height).text() === '') {
+        $('#cell' + width + height).text('\u2713') // <-- unicode check mark
+    } else {
+        $('#cell' + width + height).text('');
+    }
 
     if (indexToRemove !== -1) {
         // remove it
@@ -101,7 +103,6 @@ function evaluateCell(width, height, name) {
         studentAnswersArray.push(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].id);
     }
     console.log('Answers ', studentAnswersArray);
-    calculateScore();
 }
 
 function calculateScore() {
