@@ -9,6 +9,8 @@
 
 const theadOpen = '<thead>';
 const theadClose = '</thead>';
+const tbodyOpen = '<tbody>';
+const tbodyClose = '</tbody>';
 const thOpen = '<th>';
 const thClose = '</th>';
 const trOpen = '<tr>';
@@ -46,27 +48,26 @@ function buildTable(params) {
 
         // build the header row and append it to the table
         let headerRow = '';
-        let headerCells = headerRow.concat(thOpen, thClose);
+        let headerCells = headerRow.concat(thOpen, 'Tools', thClose);
         orderedCategoriesArray.forEach(category => {
             // header row
             // TODO: pre build map of names, use index to get mapped value name
-            headerCells = headerCells.concat(thOpen, category.name, thClose);
+            headerCells = headerCells.concat('<th class="rotate">', category.name, thClose);
         });
         headerRow = headerRow.concat(theadOpen, trOpen, headerCells, trClose, theadClose);
         $table.append(headerRow);
 
         // build each row then add them to the table as one long string
-        let thisRow = '';
+        let thisRow = tbodyOpen;
         orderedToolsArray.forEach((tool, index) => {
           thisRow = thisRow.concat(trOpen, tdOpen, tool.name, tdClose);
 
           for(let i = 0; i < categories.length; i++) {
             thisRow = thisRow.concat('<td id="cell' + i + '' + index + '" onclick="evaluateCell(\'' + i + '\',\'' + index + '\',\'' + tool.name + '\');">', tdClose);
-            console.log(thisRow);
           }
           thisRow = thisRow.concat(trClose);
         });
-        $table.append(thisRow);
+        $table.append(thisRow, tbodyClose);
 
         // add the table to the DOM
         $('#table').append($table);
@@ -84,7 +85,12 @@ function evaluateCell(width, height, name) {
     console.log('Evaluating', studentAnswersArray);
     console.log('Evaluate width ', width, ' height ', height, name);
     const indexToRemove = studentAnswersArray.indexOf(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].id);
-    $('#cell' + width + height).toggleClass('black');
+
+    // toggle the check mark
+    ($('#cell' + width + height).text() === '')
+      ? $('#cell' + width + height).text('\u2713') // <-- unicode check mark
+      : $('#cell' + width + height).text('');
+
     if (indexToRemove !== -1) {
         // remove it
         console.log('Removing ', indexToRemove);

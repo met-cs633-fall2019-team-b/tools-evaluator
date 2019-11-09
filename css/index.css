@@ -1,8 +1,107 @@
-.black {
-    background-color: black;
+/** HTML element styles **/
+table {
+    table-layout: fixed;
+    width: 80%;
 }
 
-#table table td {
-    border: 1px solid black;
+table, td, th {
     border-collapse: collapse;
+}
+
+thead {
+    display: block;
+}
+
+tbody {
+    display: block;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+th, td {
+    width: 9%;
+    border: 1px solid black;
+}
+
+tr {
+    display: table; /* display purpose; th's border */
+    width: 100%;
+    box-sizing: border-box; /* because of the border (Chrome needs this line, but not FF) */
+}
+
+td {
+    text-align: center;
+    color: #cc0000;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+tr:nth-child(even) {
+    background-color: whitesmoke;
+}
+
+/** column styles **/
+th:nth-child(1) {
+    color: #cc0000;
+    text-align: center;
+    font-size: 22px;
+    background-color: white;
+    padding: 40px;
+    width: 19%;
+}
+
+td:nth-child(1) {
+    color: black;
+    text-align: left;
+    font-size: 18px;
+    background-color: white;
+    padding: 7px 5px;
+    width: 19%;
+    cursor: default;
+}
+
+td:nth-child(2):hover { border-top: 1px solid #cc0000; border-right: 2px solid #cc0000; border-bottom: 2px solid #cc0000; border-left: 2px solid #cc0000; }
+td:nth-child(3):hover { border-top: 1px solid #cc0000; border-right: 2px solid #cc0000; border-bottom: 2px solid #cc0000; border-left: 2px solid #cc0000; }
+td:nth-child(4):hover { border-top: 1px solid #cc0000; border-right: 2px solid #cc0000; border-bottom: 2px solid #cc0000; border-left: 2px solid #cc0000; }
+td:nth-child(5):hover { border-top: 1px solid #cc0000; border-right: 2px solid #cc0000; border-bottom: 2px solid #cc0000; border-left: 2px solid #cc0000; }
+td:nth-child(6):hover { border-top: 1px solid #cc0000; border-right: 2px solid #cc0000; border-bottom: 2px solid #cc0000; border-left: 2px solid #cc0000; }
+td:nth-child(7):hover { border-top: 1px solid #cc0000; border-right: 2px solid #cc0000; border-bottom: 2px solid #cc0000; border-left: 2px solid #cc0000; }
+td:nth-child(8):hover { border-top: 1px solid #cc0000; border-right: 2px solid #cc0000; border-bottom: 2px solid #cc0000; border-left: 2px solid #cc0000; }
+td:nth-child(9):hover { border-top: 1px solid #cc0000; border-right: 2px solid #cc0000; border-bottom: 2px solid #cc0000; border-left: 2px solid #cc0000; }
+td:nth-child(10):hover { border-top: 1px solid #cc0000; border-right: 2px solid #cc0000; border-bottom: 2px solid #cc0000; border-left: 2px solid #cc0000; }
+
+/** custom selectors **/
+.bu-box-div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: serif;
+    font-size: 36px;
+    text-align: center;
+    width: 200px;
+    height: 75px;
+    background-color: #cc0000;
+    outline: #cc0000 solid medium;
+    border: 2px solid white;
+    padding: 5px;
+}
+
+.categories-div {
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #cc0000;
+    text-align: center;
+    width: 80%;
+    padding: 10px;
+}
+
+.rotate {
+    background: none;
+    transform: rotate(-55deg);
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
 }
