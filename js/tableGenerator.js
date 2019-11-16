@@ -86,22 +86,25 @@ function evaluateCell(width, height, name) {
     console.log('Evaluate width ', width, ' height ', height, name);
     const indexToRemove = studentAnswersArray.indexOf(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].id);
 
-    // toggle the check mark
-    if ($('#cell' + width + height).text() === '') {
-        $('#cell' + width + height).text('\u2713') // <-- unicode check mark
-    } else {
-        $('#cell' + width + height).text('');
-    }
+    $(document).on('click', function(event) {
+        // find closest <tr> to this <td> (event.target)
+        let row = $(event.target).closest('tr');
 
-    if (indexToRemove !== -1) {
-        // remove it
-        console.log('Removing ', indexToRemove);
-        studentAnswersArray.splice(indexToRemove, 1);
-    } else {
-        // add it
-        console.log('Pushing ', height, ' ', width);
+        // loop through closest <tr>'s child <td>s to find if a <td> in this <tr> has been selected previously
+        for (let i = 1; i < row[0].cells.length; i++) {
+
+            // if text !== '', set text to '' and remove this <td>'s cell from the studentAnswersArray
+            if ($(row[0].cells[i]).text()) {
+                $(row[0].cells[i]).text('');
+                studentAnswersArray.splice(indexToRemove, 1);
+            }
+        }
+
+        // set selected <td> text === unicode check mark and add this <td>'s cell data to studentAnswersArray
+        $(event.target).text('\u2713');
         studentAnswersArray.push(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].id);
-    }
+    });
+
     console.log('Answers ', studentAnswersArray);
 }
 
