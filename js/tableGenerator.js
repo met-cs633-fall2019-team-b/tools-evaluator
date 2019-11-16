@@ -8,6 +8,7 @@
  */
 
 // globals bad but...
+let attempt = 0;
 let correctAnswersArray = [];
 let studentAnswersArray = [];
 let orderedCategoriesArray;
@@ -117,7 +118,9 @@ function calculateScore() {
             score++;
         }
     });
+    attempt++;
     console.log('Score ', score);
+    console.log('Attempt ', attempt);
     if(studentAnswersArray.length > correctAnswersArray.length + 5) {
         msg = 'Too many cells selected.';
     } else if (studentAnswersArray.length >= correctAnswersArray.length) {
@@ -127,5 +130,6 @@ function calculateScore() {
     } else {
         msg = 'Unknown error';
     }
+    $('#attempt').text('Attempt ' + attempt);
     $('#score').text('Score ' + score);
 }
