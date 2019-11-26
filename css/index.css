@@ -24,7 +24,7 @@ th, td {
 }
 
 tr {
-    display: table; /* display purpose; th's border */
+    display: table;
     width: 100%;
     box-sizing: border-box; /* because of the border (Chrome needs this line, but not FF) */
 }
@@ -71,6 +71,13 @@ td:nth-child(9):hover { border-top: 1px solid #cc0000; border-right: 2px solid #
 td:nth-child(10):hover { border-top: 1px solid #cc0000; border-right: 2px solid #cc0000; border-bottom: 2px solid #cc0000; border-left: 2px solid #cc0000; }
 
 /** custom selectors **/
+#attempt {
+    display: flex;
+    flex-grow: 2;
+    font-size: 22px;
+    padding: 0 20px;
+}
+
 .bu-box-div {
     display: flex;
     flex-flow: row wrap;
@@ -86,6 +93,16 @@ td:nth-child(10):hover { border-top: 1px solid #cc0000; border-right: 2px solid 
     outline: #cc0000 solid medium;
     border: 2px solid white;
     padding: 5px;
+}
+
+.button-row-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /** justify-content: flex-end; **/
+    justify-content: space-between;
+    width: 80%;
+    padding: 25px 0;
 }
 
 .categories-div {
@@ -106,15 +123,6 @@ td:nth-child(10):hover { border-top: 1px solid #cc0000; border-right: 2px solid 
     -moz-border-radius: 100%;
 }
 
-.button-row-div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    width: 80%;
-    padding: 25px 0;
-}
-
 #score {
     font-size: 22px;
     padding: 0 20px;
@@ -123,7 +131,7 @@ td:nth-child(10):hover { border-top: 1px solid #cc0000; border-right: 2px solid 
 .submit-button {
     height: 50px;
     width: 100px;
-    border-radius: 12%;
+    border-radius: 10%;
     color: white;
     font-size: 24px;
     font-family: serif;
