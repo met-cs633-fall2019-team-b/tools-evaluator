@@ -61,7 +61,7 @@ function buildTable(params) {
         // build each row then add them to the table as one long string
         let thisRow = tbodyOpen;
         orderedToolsArray.forEach((tool, index) => {
-          thisRow = thisRow.concat(trOpen, tdOpen, tool.name, tdClose);
+          thisRow = thisRow.concat(trOpen, tdOpen, '<a href=\"', tool.url, '\"target="_blank">', tool.name, '</a>', tdClose);
 
           for(let i = 0; i < categories.length; i++) {
             thisRow = thisRow.concat('<td id="cell' + i + '' + index + '" onclick="evaluateCell(\'' + i + '\',\'' + index + '\',\'' + tool.name + '\');">', tdClose);
@@ -95,15 +95,17 @@ function evaluateCell(width, height, name) {
         for (let i = 1; i < row[0].cells.length; i++) {
 
             // if text !== '', set text to '' and remove this <td>'s cell from the studentAnswersArray
-            if ($(row[0].cells[i]).text()) {
+            if ($(row[0].cells[i]).text() && $(event.target).is('td[id]')) {
                 $(row[0].cells[i]).text('');
                 studentAnswersArray.splice(indexToRemove, 1);
             }
         }
 
-        // set selected <td> text === unicode check mark and add this <td>'s cell data to studentAnswersArray
-        $(event.target).text('\u2713');
-        studentAnswersArray.push(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].id);
+        if ($(event.target).is('td[id]')) {
+            // set selected <td> text === unicode check mark and add this <td>'s cell data to studentAnswersArray
+            $(event.target).text('\u2713');
+            studentAnswersArray.push(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].id);
+        }
     });
 
     console.log('Answers ', studentAnswersArray);
