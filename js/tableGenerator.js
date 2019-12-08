@@ -61,7 +61,7 @@ function buildTable(params) {
         // build each row then add them to the table as one long string
         let thisRow = tbodyOpen;
         orderedToolsArray.forEach((tool, index) => {
-          thisRow = thisRow.concat(trOpen, tdOpen, tool.name, tdClose);
+          thisRow = thisRow.concat(trOpen, tdOpen, '<a href=\"', tool.url, '\"target="_blank">', tool.name, '</a>', tdClose);
 
           for(let i = 0; i < categories.length; i++) {
             thisRow = thisRow.concat('<td id="cell' + i + '' + index + '" onclick="evaluateCell(\'' + i + '\',\'' + index + '\',\'' + tool.name + '\');">', tdClose);
