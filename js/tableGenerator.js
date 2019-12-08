@@ -95,15 +95,17 @@ function evaluateCell(width, height, name) {
         for (let i = 1; i < row[0].cells.length; i++) {
 
             // if text !== '', set text to '' and remove this <td>'s cell from the studentAnswersArray
-            if ($(row[0].cells[i]).text()) {
+            if ($(row[0].cells[i]).text() && $(event.target).is('td[id]')) {
                 $(row[0].cells[i]).text('');
                 studentAnswersArray.splice(indexToRemove, 1);
             }
         }
 
-        // set selected <td> text === unicode check mark and add this <td>'s cell data to studentAnswersArray
-        $(event.target).text('\u2713');
-        studentAnswersArray.push(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].id);
+        if ($(event.target).is('td[id]')) {
+            // set selected <td> text === unicode check mark and add this <td>'s cell data to studentAnswersArray
+            $(event.target).text('\u2713');
+            studentAnswersArray.push(orderedToolsArray[height].name + '-' + orderedCategoriesArray[width].id);
+        }
     });
 
     console.log('Answers ', studentAnswersArray);
